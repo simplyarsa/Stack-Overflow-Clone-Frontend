@@ -1,0 +1,23 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import Reducers from './reducers';
+import { MenuBarContextProvider } from './context';
+
+const store = createStore(Reducers, compose(applyMiddleware(thunk)));
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <MenuBarContextProvider >
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </MenuBarContextProvider>
+  </Provider>
+);
+
