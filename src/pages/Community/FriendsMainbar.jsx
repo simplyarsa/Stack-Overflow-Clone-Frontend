@@ -11,10 +11,8 @@ const HomeMainbar = () => {
     var currentUser=useSelector((state)=>state.currentUserReducer)
 
   const getAllFriendsQuestions = async () => {
-    console.log(currentUser?.result._id)
     try {
         const res = await axios.get(`http://localhost:5000/questions/friendspost/${currentUser?.result?._id}`)
-        console.log(res)
         setQuestionsList(res.data)
         
     } catch (error) {

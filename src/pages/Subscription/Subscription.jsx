@@ -10,7 +10,7 @@ const Subscription = () => {
     const id = currentUser?.result?._id
 
     const checkOutHandler = async (amount) => {
-        const { data: { order } } = await axios.post('http://localhost:5000/subscription/order', { amount: amount })
+        const { data: { order } } = await axios.post('https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/order', { amount: amount })
 
         const options = {
             "key": "rzp_test_yakON0b8QPOa8r", // Enter the Key ID generated from the Dashboard
@@ -21,14 +21,14 @@ const Subscription = () => {
             "image": "https://example.com/your_logo",
             "order_id": order.id,
             handler: async function (response) {
-                const result = await axios.post('http://localhost:5000/subscription/verify', { id, amount, response });
+                const result = await axios.post('https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/verify', { id, amount, response });
                 if (result.data.success === true) {
                     alert("New Subscription Plan is activated");
                 } else {
                     alert("The Plan has failed to activate!!! Contact us later.")
                 }
             },
-            "callback_url": "http://localhost:3000/Subscription",
+            "callback_url": "https://stack-overflow-arsalan.netlify.app/Subscription",
             "notes": {
                 "address": "Razorpay Corporate Office"
             },

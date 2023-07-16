@@ -21,11 +21,6 @@ export default function Post({ question , state, changeState}) {
     const location = useLocation()
     const url = 'http://localhost:3000'
 
-    const handleShare = () => {
-        copy(url + location.pathname)
-        alert('Copied url:' + url + location.pathname)
-    }
-
     const handleDelete = () => {
         dispatch(deleteQuestion(id, navigate))
         changeState(!state)

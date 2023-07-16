@@ -65,8 +65,8 @@ const OtpVerify = () => {
     }
 
     return (<>
-        {
-            !currentUser ? <h1>Please Login to use Chatbot</h1>
+        {   
+            !currentUser ? <h3 style={{display: "flex", justifyContent: "center", alignContent: "center", marginTop: "5rem" }}>Please Login to use Chatbot</h3>
                 :
                 <>
                     {!verified ?

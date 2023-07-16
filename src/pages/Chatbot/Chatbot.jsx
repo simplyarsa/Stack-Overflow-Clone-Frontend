@@ -19,8 +19,7 @@ const Chatbot = () => {
 
     const getData = async () => {
         try {
-            const res = await axios.post('https://stack-overflow-clone-backend-uh8p.onrender.com/questions/chatbot', { questionBody })
-            console.log(res.data.message.content)    
+            const res = await axios.post('https://stack-overflow-clone-backend-uh8p.onrender.com/questions/chatbot', { questionBody })   
             const data=res.data.message.content
             setStatus(false)
             setAnswerBody(data)
@@ -32,17 +31,14 @@ const Chatbot = () => {
     }
 
     const [check, setcheck] = useState(1)
-    useEffect(() => {
-    
+    useEffect(() => {  
         setallInfo([...allInfo, { message: questionBody, desc: answerBody }])
         setQuestionBody('')
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });  
         if(check){
             setallInfo([])
             setcheck(0)
-        }
-        console.log("yes")
-       
+        }       
     }, [answerBody])
 
 

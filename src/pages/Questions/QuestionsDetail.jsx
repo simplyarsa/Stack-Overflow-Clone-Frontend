@@ -22,7 +22,6 @@ const QuestionsDetail = () => {
 
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
-        console.log(answer, answerLength)
         if (User === null) {
             alert('Login or Signup to post your answer')
             navigate('/Auth')
@@ -38,7 +37,7 @@ const QuestionsDetail = () => {
     }
 
     const location = useLocation()
-    const url = 'http://localhost:3000'
+    const url = 'https://stack-overflow-arsalan.netlify.app/'
     const handleShare = () => {
         copy(url + location.pathname)
         alert('Copied url:' + url + location.pathname)
