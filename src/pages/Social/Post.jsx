@@ -85,7 +85,7 @@ export default function Post({ question , state, changeState}) {
                 <div className="postCenter" >
                     <p className='question-body'>{question.questionBody}</p>
                     {question.img?.includes('mp4') ?
-                        <video controls >
+                        <video className="postImg" controls >
                             <source src={question.img} type="video/mp4" />
                         </video> :
                         <img className="postImg" src={question.img} alt="" />

@@ -45,6 +45,7 @@ const QuestionsDetail = () => {
 
     const handleDelete = () => {
         dispatch(deleteQuestion(id, navigate))
+        navigate('/')
     }
 
     const handleUpvote = () => {

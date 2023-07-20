@@ -30,6 +30,7 @@ const AskQuestion = () => {
 
     if (!file) {
       dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User?.result?._id }, navigate))
+      navigate('/')
       return
     }
     const fileName = new Date().getTime() + file.name;
@@ -48,6 +49,7 @@ const AskQuestion = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User?.result?._id, img: downloadURL }, navigate))
+          navigate('/')
         });
       }
     );

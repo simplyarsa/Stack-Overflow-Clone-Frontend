@@ -16,7 +16,7 @@ export default function Share({state, changeState}) {
   const [file, setFile] = useState(null)
   const [fname, setFname] = useState('')
 
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState(true)
   const [message, setMessage] = useState("")
 
   const dispatch = useDispatch()
@@ -79,21 +79,21 @@ export default function Share({state, changeState}) {
     setFname(e.target.files[0].name)
   }
 
-  useEffect(() => {
-    checkSubscription()
-  }, [])
+  // useEffect(() => {
+  //   checkSubscription()
+  // }, [])
 
-  const checkSubscription = async () => {
-    try {
-      if (User) {
-        const res = await axios.get(`https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/check/${User?.result._id}`)
-        setStatus(res.data.success)
-        setMessage(res.data.message)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const checkSubscription = async () => {
+  //   try {
+  //     if (User) {
+  //       const res = await axios.get(`https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/check/${User?.result._id}`)
+  //       setStatus(res.data.success)
+  //       setMessage(res.data.message)
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const checkAuth = () => {
     if (User === null) {
