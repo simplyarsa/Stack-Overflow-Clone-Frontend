@@ -13,18 +13,19 @@ const HomeMainbar = () => {
   const questionsList = useSelector((state) => state.questionsReducer);
   const user=useSelector((state)=>state.currentUserReducer);
 
-  const [status,setStatus]=useState(false)
-  const [message,setMessage]=useState("")
+  // const [status,setStatus]=useState(false)
+  // const [message,setMessage]=useState("")
 
-  useEffect(() => {
-    checkSubscription()
-  }, [])
+  // useEffect(() => {
+  //   checkSubscription()
+  // }, [])
 
   const checkSubscription=async ()=>{
     try {
       const res=await axios.get(`https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/check/${user?.result._id}`)
-      setStatus(res.data.success)
-      setMessage(res.data.message)
+      // setStatus(res.data.success)
+      // setMessage(res.data.message)
+      return res
     } catch (error) {
       console.log(error)
     }
@@ -36,6 +37,16 @@ const HomeMainbar = () => {
       navigate('/Auth')
     }
     else{
+      let status
+      let message
+      try {
+        const res=await axios.get(`https://stack-overflow-clone-backend-uh8p.onrender.com/subscription/check/${user?.result._id}`)
+        status=res.data.success
+        message=res.data.message
+
+      } catch (error) {
+        console.log(error)
+      }               
       if(status){
         navigate('/AskQuestion')
       }
